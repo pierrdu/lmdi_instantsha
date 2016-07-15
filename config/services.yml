@@ -1,0 +1,15 @@
+services:
+     lmdi.instantsha.listener:
+        class: lmdi\instantsha\event\listener
+        arguments:
+            - '@dbal.conn'
+            - '@config'
+            - '@template'
+            - '@user'
+            - '@request'
+            - '@auth'
+            - '@log'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+        tags:
+            - { name: event.listener }

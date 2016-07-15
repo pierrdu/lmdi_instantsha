@@ -1,0 +1,31 @@
+<!-- INCLUDE overall_header.html -->
+
+<a name="maincontent"></a>
+
+<h1>{L_ACP_INSTANTSHA_TITLE}</h1>
+<p>{L_ACP_INSTANTSHA_SETTINGS}</p>
+
+<form id="acp_lexicon" method="post" action="{C_ACTION}">
+<fieldset>
+	<dl>
+		<dt><label>{L_ACP_INSTANTSHA_ALLOW_FEATURE}{L_COLON}</label><br />
+		<span>{L_ACP_INSTANTSHA_ALLOW_FEATURE_EXPLAIN}</span></dt>
+		<dd>
+		<select name="forum" id="forum">
+			<!-- BEGIN forums -->
+				<option value="{forums.FORUM_ID}" {forums.SELECTED}>{forums.FORUM_NAME}</option>
+			<!-- END forums -->
+		</select>
+		</dd>
+	</dl>
+</fieldset>
+
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="config"
+		value="{L_SUBMIT}" />&nbsp;
+	</p>
+	{S_FORM_TOKEN}
+</form>
+
+
+<!-- INCLUDE overall_footer.html -->

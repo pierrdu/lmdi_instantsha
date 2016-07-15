@@ -1,0 +1,30 @@
+{
+	"name": "lmdi/instantsha",
+	"type": "phpbb-extension",
+	"description": "Instant Shadow Topic for phpBB 3.1",
+	"homepage": "http://www.insecte.org/ext/readme.txt",
+	"version": "1.0.0",
+	"time": "2016-7-15",
+	"license": "GPL-2.0",
+	"authors": 
+	[	
+		{
+			"name": "Pierre Duhem",
+			"email": "pierre@duhem.com",
+			"homepage": "http://www.insecte.org/ext/readme.txt",
+			"role": "Developer of current extension"
+		}
+	],
+	"require": {
+		"php": ">=5.3.3"
+	},
+	"require-dev": {
+		"phpbb/epv": "dev-master"
+	},
+	"extra": {
+		"display-name": "LMDI Instant Shadow Topic",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.1.0-RC2,<3.3.0@dev"
+		}
+	}
+}
