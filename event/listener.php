@@ -79,8 +79,8 @@ class listener implements EventSubscriberInterface
 	public function build_url($event)
 	{
 		$target = (int) $this->config['lmdi_instantsha'];
-		// Target forum configured and we aren't in this forum
-		if ($target && ($target != $this->fid))
+		// Moderator with delete and more permission, target forum configured and we aren't in this forum
+		if (($this->auth->acl_get('m_delete', $this->fid) || $this->auth->acl_get('m_move', $this->fid)) && ($target && ($target != $this->fid)))
 		{
 			$params = "f=$this->fid&amp;t=$this->tid&amp;shadow=1";
 			$url = append_sid($this->root_path . 'viewtopic.' . $this->phpEx, $params);
@@ -93,7 +93,7 @@ class listener implements EventSubscriberInterface
 		else
 		{
 		$this->template->assign_vars(array(
-			'S_TRASHBIN'	=> false,
+			'S_INSTANTSHA'	=> false,
 			));
 		}
 	}
@@ -121,14 +121,12 @@ class listener implements EventSubscriberInterface
 					$row['topic_status'] = ITEM_MOVED;
 					// var_dump ($row);
 					$sql = 'INSERT INTO ' . TOPICS_TABLE . ' ' . $this->db->sql_build_array('INSERT', $row);
-					var_dump ($sql);
 					$this->db->sql_query($sql);
 
 					// Redirection
 					$params = "f={$this->fid}&amp;t={$this->tid}";
 					$url = append_sid($this->root_path . 'viewtopic.' . $this->phpEx, $params);
-					var_dump ($url);
-					// redirect($url);
+					redirect($url);
 				}
 			}
 		}
