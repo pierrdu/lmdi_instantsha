@@ -18,13 +18,12 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge ($lang, array(
-	'INSTANTSHA'			=> 'Sujet traceur instantané',
-	'INSTANTSHA_MOVE'		=> 'Création d’un sujet traceur',
-	'INSTANTSHA_TEXT'		=> 'Sujet mis à la corbeille.',
+	'INSTANTSHA'			=> 'Sujet-traceur instantané',
+	'INSTANTSHA_MOVE'		=> 'Création d’un sujet-traceur',
 
 // ACP
-	'ACP_INSTANTSHA_TITLE'	=> 'Sujet traceur instantané',
+	'ACP_INSTANTSHA_TITLE'	=> 'Sujet-traceur instantané',
 	'ACP_INSTANTSHA_SETTINGS'	=> 'Paramétrage de l’extension',
 	'ACP_INSTANTSHA_ALLOW_FEATURE'		=> 'Sélection du forum de destination',
-	'ACP_INSTANTSHA_ALLOW_FEATURE_EXPLAIN'	=> 'Vous pouvez sélectionner ci-contre le forum qui sera la destination des sujets traceurs créés.',
+	'ACP_INSTANTSHA_ALLOW_FEATURE_EXPLAIN'	=> 'Vous pouvez sélectionner ci-contre le forum qui sera la destination des sujets-traceurs créés.',
 ));

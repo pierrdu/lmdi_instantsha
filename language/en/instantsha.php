@@ -20,8 +20,6 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge ($lang, array(
 	'INSTANTSHA'	=> 'Instant Shadow Topic',
 	'INSTANTSHA_MOVE'	=> 'Shadow topic created in the target forum',
-	'INSTANTSHA_TEXT'	=> 'Topic moved to the INSTANTSHA.',
-
 
 // ACP
 	'ACP_INSTANTSHA_TITLE'	=> 'Instant Shadow Topic',

@@ -119,7 +119,6 @@ class listener implements EventSubscriberInterface
 					$row['topic_id'] = '0';
 					$row['forum_id'] = $target;
 					$row['topic_status'] = ITEM_MOVED;
-					// var_dump ($row);
 					$sql = 'INSERT INTO ' . TOPICS_TABLE . ' ' . $this->db->sql_build_array('INSERT', $row);
 					$this->db->sql_query($sql);
 
