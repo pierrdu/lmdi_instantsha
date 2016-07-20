@@ -111,15 +111,40 @@ class listener implements EventSubscriberInterface
 			{
 				if ($this->auth->acl_get('m_delete', $this->fid) || $this->auth->acl_get('m_move', $this->fid))
 				{
+					// Shadow topic creation
 					$sql = 'SELECT * FROM ' .TOPICS_TABLE . " WHERE topic_id = $this->tid";
 					$result = $this->db->sql_query($sql);
 					$row = $this->db->sql_fetchrow($result);
 					$this->db->sql_freeresult ($result);
+					
 					$row['topic_moved_id'] = $this->tid;
 					$row['topic_id'] = '0';
 					$row['forum_id'] = $target;
 					$row['topic_status'] = ITEM_MOVED;
 					$sql = 'INSERT INTO ' . TOPICS_TABLE . ' ' . $this->db->sql_build_array('INSERT', $row);
+					$this->db->sql_query($sql);
+
+					// Get the new topic data
+					$tid = $this->db->sql_nextid();
+					$sql = 'SELECT * FROM ' .TOPICS_TABLE . " WHERE topic_id = $tid";
+					$result = $this->db->sql_query($sql);
+					$topic = $this->db->sql_fetchrow($result);
+					$this->db->sql_freeresult ($result);
+
+					// Target forum updating
+					$sql = 'SELECT * FROM ' . FORUMS_TABLE . " WHERE forum_id = $target";
+					$result = $this->db->sql_query($sql);
+					$forum = $this->db->sql_fetchrow($result);
+					$this->db->sql_freeresult ($result);
+					$forum['forum_last_post_id'] = $tid;
+					$forum['forum_last_poster_id'] = $topic['topic_poster'];
+					$forum['forum_last_post_subject'] = $topic['topic_title'];
+					$forum['forum_last_post_time'] = $topic['topic_time'];
+					$forum['forum_last_poster_name'] = $topic['topic_last_poster_name'];
+					$forum['forum_last_poster_colour'] = $topic['topic_last_poster_colour'];
+					$forum['forum_posts_approved'] = $forum['forum_posts_approved'] + 1;
+					$forum['forum_topics_approved'] = $forum['forum_topics_approved'] + 1;
+					$sql = 'UPDATE ' . FORUMS_TABLE . ' SET ' . $this->db->sql_build_array('UPDATE', $forum) . " WHERE forum_id = $target";
 					$this->db->sql_query($sql);
 
 					// Redirection
