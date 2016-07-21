@@ -116,7 +116,6 @@ class listener implements EventSubscriberInterface
 					$result = $this->db->sql_query($sql);
 					$row = $this->db->sql_fetchrow($result);
 					$this->db->sql_freeresult ($result);
-					
 					$row['topic_moved_id'] = $this->tid;
 					$row['topic_id'] = '0';
 					$row['forum_id'] = $target;
@@ -124,7 +123,7 @@ class listener implements EventSubscriberInterface
 					$sql = 'INSERT INTO ' . TOPICS_TABLE . ' ' . $this->db->sql_build_array('INSERT', $row);
 					$this->db->sql_query($sql);
 
-					// Get the new topic data
+					// Get new topic data
 					$tid = $this->db->sql_nextid();
 					$sql = 'SELECT * FROM ' .TOPICS_TABLE . " WHERE topic_id = $tid";
 					$result = $this->db->sql_query($sql);
