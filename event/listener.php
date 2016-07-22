@@ -141,7 +141,7 @@ class listener implements EventSubscriberInterface
 					$forum['forum_last_post_time'] = $topic['topic_time'];
 					$forum['forum_last_poster_name'] = $topic['topic_last_poster_name'];
 					$forum['forum_last_poster_colour'] = $topic['topic_last_poster_colour'];
-					$forum['forum_posts_approved'] = $forum['forum_posts_approved'] + 1;
+					// $forum['forum_posts_approved'] = $forum['forum_posts_approved'] + 1;
 					$forum['forum_topics_approved'] = $forum['forum_topics_approved'] + 1;
 					$sql = 'UPDATE ' . FORUMS_TABLE . ' SET ' . $this->db->sql_build_array('UPDATE', $forum) . " WHERE forum_id = $target";
 					$this->db->sql_query($sql);

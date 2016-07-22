@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Instant Shadow Topic for phpBB 3.1",
 	"homepage": "http://www.insecte.org/ext/readme.txt",
-	"version": "1.0.5",
-	"time": "2016-7-21",
+	"version": "1.0.6",
+	"time": "2016-7-22",
 	"license": "GPL-2.0",
 	"authors": 
 	[	
@@ -12,7 +12,7 @@
 			"name": "Pierre Duhem",
 			"email": "pierre@duhem.com",
 			"homepage": "http://www.insecte.org/ext/readme.txt",
-			"role": "Developer of current extension"
+			"role": "Extensionn developer"
 		}
 	],
 	"require": {
